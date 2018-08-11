@@ -38,7 +38,15 @@ class Kernel extends HttpKernel
         ],
         'user' => [
             \Illuminate\Auth\Middleware\Authenticate::class,
-            \App\Http\Middleware\User::class
+            \App\Http\Middleware\UserMiddelware::class
+        ],
+        'worker' => [
+            \Illuminate\Auth\Middleware\Authenticate::class,
+            \App\Http\Middleware\WorkerMiddelware::class
+        ],
+        'admin' => [
+            \Illuminate\Auth\Middleware\Authenticate::class,
+            \App\Http\Middleware\AdminMiddelware::class
         ],
 
         'api' => [

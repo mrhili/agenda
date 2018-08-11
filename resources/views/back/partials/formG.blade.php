@@ -137,19 +137,19 @@
 
                         <div class="text-center">
 
-                                <img src="{{ \App\Helpers\Config\Setting::ifImg( $name ) }}" class="img-responsive" width="30%"/>
+                                <img src="{{ CommonPics::ifImg( $name ) }}" class="img-responsive" width="30%"/>
 
 
                         </div>
 
-                        
+
 
                     @endif
 
 
                   </div>
                 </div>
-                        
+
 
                     @if ($errors->has($name))
                         <span class="help-block">
@@ -160,8 +160,6 @@
 
                     @if( $type == 'file' )
 
-                        
+
 
                     @endif
-
-

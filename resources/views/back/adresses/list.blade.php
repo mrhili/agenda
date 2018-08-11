@@ -76,7 +76,7 @@ The Main Configuration Of the web application
 
                   @include('back.partials.formG', ['name' => 'phone', 'type' => 'tel', 'text' => 'Téléphone', 'class'=>'', 'required' => true, 'additionalInfo' => ['id' =>  'phonefield'] ])
                   </div>
-                 
+
 
                   <div class="clearfix"></div>
 
@@ -150,7 +150,7 @@ The Main Configuration Of the web application
 
 window.index = '{{ route("index") }}';
 
-    
+
           var id, idOf, ad, statu_value, payment, month, comment, hoofield, users, user, exteriorinfo, exteriorname, exteriornamefield, exteriorinfos;
 
 
@@ -175,7 +175,7 @@ $(function() {
 </script>
 
 <script type="text/javascript">
-  
+
 $( document ).ready(function() {
 
 var addform = $('#add-form');
@@ -206,14 +206,14 @@ addform.on("click", function(e){
 if( $('#form').valid() ){
 
               addform.attr('disabled', true);
-              
+
               namefield = $('#namefield').val();
 
               lastnamefield = $('#lastnamefield').val();
 
               phonefield = $('#phonefield').val();
 
-              axios.get('/store-adress/',{
+              axios.post('/store-information/',{
                 headers: {
                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
@@ -232,8 +232,8 @@ if( $('#form').valid() ){
                     returnedArray['name']+' '+returnedArray['last_name']+' '+'a été ajouté avec succes',
                     'success'
                   );
-                  
-                  
+
+
                   console.log(returnedArray);
 /*        ->editColumn('modifier', function($model){
             return link_to('#', 'modifier', ['class' => 'btn btn-info btn-circle btn-update', 'data-toggle'=>'modal', 'data-target'=>'#modal-default', 'data-id' => $model->id ], null);
@@ -250,7 +250,7 @@ if( $('#form').valid() ){
             suprimer: '<a href="#" class="btn btn-info btn-circle btn-delete" data-toggle="modal" data-target="#modal-default" data-id="'+returnedArray['id']+'">modifier</a>'
 
                   }
-            
+
 
         ).draw( false );
 
@@ -271,12 +271,12 @@ if( $('#form').valid() ){
 
 }
 
-  }); 
+  });
 
 
 
 
-    
+
 $("#adresses-table").on("click", ".btn-update", function(){
    // your code goes here
 
@@ -287,7 +287,7 @@ $("#adresses-table").on("click", ".btn-update", function(){
    updateform.show();
 
 
-              axios.get('/show-adress/'+id,{
+              axios.get('/show-information/'+id,{
                 headers: {
                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
@@ -320,7 +320,7 @@ $("#adresses-table").on("click", ".btn-update", function(){
 
 
 
-   
+
 
 
 
@@ -335,14 +335,14 @@ $("#adresses-table").on("click", ".btn-delete", function(){
             $button.attr('disabled', true);
 
 
-axios.get('/delete-adress/'+id,{
+axios.delete('/delete-information/'+id,{
                 headers: {
                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
 
               })
                 .then(function (response) {
-                  
+
                   var returnedArray = response.data;
                   console.log(returnedArray);
                   swal(
@@ -380,14 +380,14 @@ updateform.on("click", function(e){
 if( $('#form').valid() ){
 
               updateform.attr('disabled', true);
-              
+
               namefield = $('#namefield').val();
 
               lastnamefield = $('#lastnamefield').val();
 
               phonefield = $('#phonefield').val();
 
-              axios.get('/update-adress/'+id,{
+              axios.put('/update-information/'+id,{
                 headers: {
                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
@@ -405,15 +405,15 @@ if( $('#form').valid() ){
                     returnedArray['name']+' '+returnedArray['last_name']+' '+'a été modifié avec succes',
                     'success'
                   );
-                  
-                  
+
+
                   $button = $('#'+window.realid);
                   $phone = $button.parent().prev();
                   $nomcomplet = $button.parent().prev().prev();
 
                   $phone.text(returnedArray['phone']);
                   $nomcomplet.text(returnedArray['name']+' '+returnedArray['last_name']);
- 
+
                   console.log(returnedArray);
 
                 })
@@ -433,7 +433,7 @@ if( $('#form').valid() ){
 
 }
 
-  }); 
+  });
 
 
 

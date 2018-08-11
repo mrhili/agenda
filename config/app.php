@@ -177,6 +177,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        App\Providers\CommonServiceProvider::class,
+
     ],
 
     /*
@@ -225,6 +227,11 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+
+
+        'ArrayHolder' => App\Helpers\Common\Holder::class,
+        'CommonPics' => App\Helpers\Common\Pics::class,
 
     ],
 

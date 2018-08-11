@@ -3,8 +3,12 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\{
+  User
+};
+
 use Auth;
-class User
+class UserMiddelware
 {
     /**
      * Handle an incoming request.
@@ -15,15 +19,15 @@ class User
      */
     public function handle($request, Closure $next)
     {
-        if( Auth::check() ){
+      if( Auth::check() || Auth::user()->role >= 0 ){
 
-            return $next($request);
+        return $next($request);
 
 
-        }else{
+      }else{
 
-            return redirect('/');
+        return redirect('/');
 
-        }
+      }
     }
 }
